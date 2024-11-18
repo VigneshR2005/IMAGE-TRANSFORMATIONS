@@ -113,51 +113,57 @@ cv2.destroyAllWindows()
 ```
 ## Output:
 
-### Original:
-
-![download](https://github.com/user-attachments/assets/b40f2573-7043-4929-acfc-4efdffcc5f9e)
 
 ### i)Image Translation
 
-![Screenshot 2024-11-18 190813](https://github.com/user-attachments/assets/a5bffeb3-5f69-4f34-bcfa-9402109bfe94)
+![download](https://github.com/user-attachments/assets/76de5944-29e7-4748-a8e9-8c1227407e2d)
 
 
 
 
 ### ii) Image Scaling
-![download](https://github.com/user-attachments/assets/7b468d04-2d5b-4ab7-adff-18156e43251d)
+
+![download](https://github.com/user-attachments/assets/84ba7c44-35a0-40ab-b870-e5fc19308bb9)
+
 
 
 
 
 ### iii)Image shearing
-![download](https://github.com/user-attachments/assets/876238f3-cbeb-4a03-a9c1-a904ef7666bc)
-![download](https://github.com/user-attachments/assets/4022d058-37bc-4a9e-b28e-b4616aeca35b)
 
+![download](https://github.com/user-attachments/assets/07e8df97-96bb-40a9-ba34-94a4fce8dc7a)
+
+
+![download](https://github.com/user-attachments/assets/6366a811-401f-4d09-b5d9-bdb628eef075)
 
 
 ### iv)Image Reflection
 
-![download](https://github.com/user-attachments/assets/c0a3fbe5-973d-49c4-ab41-e4dc82d531ff)
-
-![download](https://github.com/user-attachments/assets/0b79f629-4614-4c28-b8ff-50ba06de5cdb)
+![download](https://github.com/user-attachments/assets/ffa3562e-467b-45f7-970c-b18429a53dd1)
 
 
+
+![download](https://github.com/user-attachments/assets/0a86c458-74d6-420b-a65f-e55289bca722)
 
 
 
 
 
 ### v)Image Rotation
-![download](https://github.com/user-attachments/assets/6d8c6154-0ca4-44bf-a5af-b7542c8e0ae5)
+
+![download](https://github.com/user-attachments/assets/2288c9a8-e862-4ded-a121-5e15880b3fdf)
 
 
 
 ### vi)Image Cropping
-![Screenshot 2024-11-18 191550](https://github.com/user-attachments/assets/8b5c5748-16f3-48b6-81ca-8b3d5eb308ed)
+orginal
+![download](https://github.com/user-attachments/assets/701637d5-810f-4bae-84aa-add047008263)
 
 
 Cropped
+![download](https://github.com/user-attachments/assets/7312f517-e290-4e67-80a9-ef7804837cb1)
+
+
 
 ## Result: 
 
