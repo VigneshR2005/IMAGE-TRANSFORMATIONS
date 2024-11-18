@@ -23,7 +23,7 @@ Display the modified image output.
 End the program.
 
 
-
+```
 ## Program:
 
 Developed By: R Vignesh
@@ -31,111 +31,96 @@ Developed By: R Vignesh
 Register Number: 212222230172
 
 i)Image Translation
-```
-import numpy as np
 import cv2
-import matplotlib.pyplot as plt
-in_img=cv2.imread("dog.jpg")
-in_img=cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-plt.axis('off')
-plt.imshow(in_img)
-plt.show()
-```
+import numpy as np
+
+# Load the image
+image = cv2.imread('dog.jpg')
+
+# Define translation matrix: (shift along x, shift along y)
+tx, ty = 100, 50
+translation_matrix = np.float32([[1, 0, tx], [0, 1, ty]])
+
+# Apply translation
+translated_image = cv2.warpAffine(image, translation_matrix, (image.shape[1], image.shape[0]))
+
+# Display
+cv2.imshow('Translated Image', translated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 ii) Image Scaling
-```import numpy as np
-import cv2
-import matplotlib.pyplot as plt
-in_img=cv2.imread("dog.jpg")
-in_img=cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-rows,cols,dim=in_img.shape
-M=np.float32([[1,0,50],
-              [0,1,50],
-              [0,0,1]])
-trans_img=cv2.warpPerspective(in_img, M, (cols,rows))
-plt.axis('off')
-plt.imshow(trans_img)
-plt.show()
-```
+# Scaling factors
+scale_x, scale_y = 1.5, 1.5
+
+# Resize image
+scaled_image = cv2.resize(image, None, fx=scale_x, fy=scale_y, interpolation=cv2.INTER_LINEAR)
+
+# Display
+cv2.imshow('Scaled Image', scaled_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 iii)Image shearing
-```
-import numpy as np
-import cv2
-import matplotlib.pyplot as plt
-in_img=cv2.imread("dog.jpg")
-in_img=cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-rows,cols,dim=in_img.shape
-M_x=np.float32([[1,0.5,0],
-                [0,1 ,0],
-                [0,0 ,1]])
-M_y=np.float32([[1,  0,0],
-                [0.5,1,0],
-                [0,  0,1]])
-sheared_img_x=cv2.warpPerspective(in_img,M_x,(int(cols),int(rows)))
-sheared_img_y=cv2.warpPerspective(in_img,M_y,(int(cols),int(rows)))
-plt.axis('off')
-plt.imshow(sheared_img_x)
-plt.show()
-plt.axis('off')
-plt.imshow(sheared_img_y)
-plt.show()
-```
+# Define shearing matrix
+shear_factor = 0.5
+shearing_matrix = np.float32([[1, shear_factor, 0], [0, 1, 0]])
+
+# Apply shearing
+sheared_image = cv2.warpAffine(image, shearing_matrix, (int(image.shape[1] * 1.5), image.shape[0]))
+
+# Display
+cv2.imshow('Sheared Image', sheared_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 iv)Image Reflection
-```
-import numpy as np
-import cv2
-import matplotlib.pyplot as plt
-in_img=cv2.imread("dog.jpg")
-in_img=cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-rows,cols,dim=in_img.shape
-M_x=np.float32([[1,  0,0  ],
-                [0,-1,rows],
-                [0,0,1  ]])
-M_y=np.float32([[-1,0,cols],
-                [ 0,1,0  ],
-                [ 0,0,1  ]])
-reflect_x=cv2.warpPerspective(in_img,M_x,(int(cols),int(rows)))
-reflect_y=cv2.warpPerspective(in_img,M_y,(int(cols),int(rows)))
-plt.axis('off')
-plt.imshow(reflect_x)
-plt.show()
-plt.axis('off')
-plt.imshow(reflect_y)
-plt.show()  
-```
+ Reflection_Image= cv2.flip(image, 1)
+
+# Display
+cv2.imshow('Reflection Image', Reflection_Image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 v)Image Rotation
-```
-import numpy as np
-import cv2
-import matplotlib.pyplot as plt
-in_img=cv2.imread("dog.jpg")
-in_img=cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-rows,cols,dim=in_img.shape
-angle=np.radians(10)
-M=np.float32([[np.cos(angle),-(np.sin(angle)),0],
-              [np.sin(angle),np.cos(angle),0],
-              [0,0,1]])
-rotated_img=cv2.warpPerspective(in_img,M,(int(cols),int(rows)))
-plt.axis('off')
-plt.imshow(rotated_img)
-plt.show()  
-```
+# Rotation center, angle and scale
+center = (image.shape[1] // 2, image.shape[0] // 2)
+angle, scale = 45, 1.0
+
+# Get rotation matrix
+rotation_matrix = cv2.getRotationMatrix2D(center, angle, scale)
+
+# Apply rotation
+rotated_image = cv2.warpAffine(image, rotation_matrix, (image.shape[1], image.shape[0]))
+
+# Display
+cv2.imshow('Rotated Image', rotated_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 vi)Image Cropping
-```
-import numpy as np
-import cv2
-import matplotlib.pyplot as plt
-in_img = cv2.imread("dog.jpg")
-in_img = cv2.cvtColor(in_img,cv2.COLOR_BGR2RGB)
-plt.imshow(in_img)
-plt.show()
-cropped_img=in_img[10:150 ,10:250]
-plt.imshow(cropped_img)
-plt.show()
+# Define the region of interest (ROI)
+x, y, w, h = 100, 100, 300, 300
+cropped_image = image[y:y+h, x:x+w]
+
+# Display
+cv2.imshow('Cropped Image', cropped_image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
 ```
 ## Output:
+
+### Original:
+
+![download](https://github.com/user-attachments/assets/b40f2573-7043-4929-acfc-4efdffcc5f9e)
+
 ### i)Image Translation
 
-![Screenshot 2024-10-01 113500](https://github.com/user-attachments/assets/b2f60924-a5ea-42fd-99b7-97ac81aa5b12)
+![Screenshot 2024-11-18 190813](https://github.com/user-attachments/assets/a5bffeb3-5f69-4f34-bcfa-9402109bfe94)
+
 
 
 
@@ -153,9 +138,11 @@ plt.show()
 
 ### iv)Image Reflection
 
+![download](https://github.com/user-attachments/assets/c0a3fbe5-973d-49c4-ab41-e4dc82d531ff)
+
 ![download](https://github.com/user-attachments/assets/0b79f629-4614-4c28-b8ff-50ba06de5cdb)
 
-![download](https://github.com/user-attachments/assets/c0a3fbe5-973d-49c4-ab41-e4dc82d531ff)
+
 
 
 
@@ -167,11 +154,8 @@ plt.show()
 
 
 ### vi)Image Cropping
-![download](https://github.com/user-attachments/assets/ab43066c-55e0-4bde-82e2-9449020c69ef)
+![Screenshot 2024-11-18 191550](https://github.com/user-attachments/assets/8b5c5748-16f3-48b6-81ca-8b3d5eb308ed)
 
-Original
-
-![download](https://github.com/user-attachments/assets/b40f2573-7043-4929-acfc-4efdffcc5f9e)
 
 Cropped
 
